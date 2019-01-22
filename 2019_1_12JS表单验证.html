@@ -63,9 +63,27 @@
 		<button type="submit" class="btn btn-success">修改</button>
 		</div> 	
 	 </form>
-		<p>
-			
-		</p>
+	 <p>
+	 	主要的实现代码
+	 <pre class="pre-scrollable ">
+		&ltscript&gt
+	function confirmPassword(){
+		var firstPassword=document.forms['ChangePasswordForm']["password"].value;
+		var confirmPassword=document.forms['ChangePasswordForm']["confirm_password"].value;
+		if( firstPassword=="" || confirmPassword==""){
+			alert("请将密码框补充完整");
+			return false;
+
+		}else if (firstPassword != confirmPassword) {
+			alert("两次密码输入不一致");
+			return false;
+		}
+
+	}
+	&/script&gt
+	</pre>
+	 </p>
+	
 	</article>
 </body>
 </html>

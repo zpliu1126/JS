@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<div id="sourceCodeheader">
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<header id="header" class="">
+</header><!-- /header -->
+<script>
+$("#header").load("/includes/header.html");
+</script>
+<script src="/js/my.js"></script>
+</div>
+
+<body>
+
+	<h1 class="page-header text-primary text-center">JS基础</h1>
+	<div class="container">
+	<article class="text-primary" style="font-size: 20px;">
+		<h1>今天试着使用js加载模板html</h1>
+		<p>
+			减少重复造轮子
+		<ul class="bg-info text-success	" style="font-size: 20px">
+			<li>首先可以在一个includes目录下放上造好的轮子</li>
+
+			<li>接着使用js函数进行引用轮子</li>
+		</ul>
+		源代码如下
+		<script>
+			sourceCode("sourceCodeheader");
+		</script>
+		</p>
+		<section class="text-danger">
+			<p>这里还有一些需要注意的地方</p>
+			<ul>
+				<li>首先JS是依赖于jQuery的所欲先要加载jQuery</li>
+				<li>在加载header标签时，首先需要加载jQuery</li>
+				<li>加载include中的header标签时，使用的是“$(#ID)"以将加载的文件放入对应的标签</li>
+				<li>标签则需要先于加载文件的出现</li>
+			</ul>
+		</section>
+	</article>
+
+	<article class="" style="font-size: 20px">
+		<h1>讲一讲如何使用github将我的代码使用js展示吧！</h1>
+		<section class="text-justify text-success" >
+			<ul>
+				<li>首先你得有你的github的 <strong> <a href=" https://zpliu1126.github.io/">主页</a></strong> </li>
+				<li>接着再创建一些仓库的时候，把html页面放在gh-page分支下，才能够进行访问</li>
+				<li>把主要的CSS JS 文件放在github主页的同样名称的文件夹下；当自己在本地运行成功时直接上传就行了</li>
+				<li>我的是centos+appach建的站，所以在/var/www/html/下建立同样的CSS JS 文件夹</li>
+			</ul>
+		</section>
+		<h1>关于如何进行服务器端上传github文件的流程</h1>
+
+		<section class="text-justify text-primary">
+			<ul>
+				<li>初始化仓库git init</li>
+				<li>连接远程仓库 git  remote add  origin SSH地址</li>
+				<li>要使用gh-pages分支进行展示，创建分支 git branch gh-pages</li>
+				<li>选择分支 git checkout gh-pages</li>
+				<li>拉下github端的数据放在gh-pages分支 git pull origin gh-pages</li>
+				<li>添加上传文件 git add ./*</li>
+				<li>说明 git commit -m "说明事件发生"</li>
+				<li>开始上传 git push origin gh-pages</li>
+					
+				
+			</ul>
+			
+		</section>
+
+	</article>
+
+	<hr>	
+	<footer id="footer">
+	</footer>
+	<script>
+	$("#footer").load("/includes/footer.html.php");
+	</script>
+		
+	</div>
+</body>
+</html>

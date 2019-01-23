@@ -6,5 +6,5 @@ git add .
 git commit -m "note"
 git checkout master
 git merge newbranch 
-git push  origin gh-pages 
+git push  origin master 
 git branch -D newbranch 

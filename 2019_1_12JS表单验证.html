@@ -5,18 +5,91 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width
 	initial-scale=1">
-	<title>基于JS的表单验证</title>
+	<title>JS基础</title>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- JS表单的验证函数 -->
+
+<link rel="stylesheet" type="text/css" href="/NoteBook/CSS/my.css">
+<script src="/NoteBook/js/my.js"></script>
+
+<!-- 这里贴上我写的js代码主要是用来展示到html上的，它在my.js中已经存在了 -->
+<script id="loginform_js">
+	function confirmPassword(){
+		var firstPassword=document.forms['ChangePasswordForm']["password"].value;
+		var confirmPassword=document.forms['ChangePasswordForm']["confirm_password"].value;
+		if( firstPassword=="" || confirmPassword==""){
+			alert("请将密码框补充完整");
+			return false;
+
+		}else if (firstPassword != confirmPassword) {
+			alert("两次密码输入不一致");
+			return false;
+		}
+
+	}
+</script>
 </head>
 <body>
 	<h1 class="page-header text-center text-primary">JS基础</h1>
 	
+	<div class="container">
+		
+	<article >
+		<h1>实现基于JS的表单验证</h1>
+
+	<form action="" name="ChangePasswordForm" id="loginform" 
+	 onsubmit="return confirmPassword()" class="form-horizontal" method="post">
+	<div class="form-group">
+		<label for="user" class="control-label col-sm-2">Authorname</label>
+		<div class="col-sm-10 col-lg-4 text-success">
+			XXXX
+			<input type="hidden" name="email" value="#">
+		</div>	
+		</div>
+		<div class="form-group">
+		<label for="user" class="control-label col-sm-2">Password</label>
+		<div class="col-sm-10 col-lg-4 input-lg">
+
+			<input type="password" class="form-control "   name="password" placeholder="">
+		</div>	
+		</div>
+		<div class="form-group">
+		<label for="user" class="control-label col-sm-2">Confirm Password</label>
+		<div class="col-sm-10 col-lg-4 input-lg">
+			<input type="password" class="form-control "   name="confirm_password" placeholder="">
+		</div>	
+		</div>
+		<input type="hidden" name="action" value="begin_change">
+		<div class="col-sm-offset-2 col-sm-10"> 
+		<button type="submit" class="btn btn-success">修改</button>
+		</div> 	
+	 </form>
+
+	 <p>
+	 <h2>主要的实现代码分为两部分:</h2>
+	 <p>
+	 	<div class="text-info " style="font-size: 25px">
+	 		第一部分是form标签的使用，它调用了一个JS函数，并且使用其中的onsubmit属性来判断当前表单是否需要提交
+	 	</div>
+	<script>	
+		sourceCode("loginform");	
+	</script>
+	 <div class="text-info " style="font-size: 25px">
+	 	第二部分是则是我的js函数，通过对两个输入框是否为空和一致进行判断
+	 </div>
+	<script>	
+		sourceCode("loginform_js");	
+	</script>
+	</p>
+	</article>
+	</div>
 </body>
 </html>

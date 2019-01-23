@@ -17,17 +17,72 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
  <!-- JS表单的验证函数 -->
 
-<link rel="stylesheet" type="text/css" href="/NoteBook/CSS/my.css">
-<script src="/NoteBook/js/my.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<script src="/js/my.js"></script>
 
 <!-- 这里贴上我写的js代码主要是用来展示到html上的，它在my.js中已经存在了 -->
 
+<script type="text/javascript" id="source_js">
+	function sourceCode(sourceID){
+	 	var a=document.getElementById(sourceID).outerHTML;
+	 	a=a.replace(/\>/g,"\&gt");
+	 	a=a.replace(/\</g,"\&lt"); 
+	 	/*对HTML标签进行替换*/	
+	 	a=a.replace(/(\&lt)([^\&][a-zA-Z]+)([^\&]*)(\&gt)/g,"$1<span>$2</span>$3$4");
+	 	a=a.replace(/(")([^"]*)(")/g,"$1<font color=\"#E6DB74\">$2</font>$3");
+	 	a=a.replace(/(')([^']*)(')/g,"$1<font color=\"#E6DB74\">$2</font>$3");
+
+	 	/*批量对关键字进行替换*/
+	 	var keywords=["var","if","else","return"]
+	 	for (var i = keywords.length - 1; i >= 0; i--) {
+	 		var reg="/"+"("+keywords[i]+")"+"/g";
+	 		a=a.replace(eval(reg),"<font color=\"#F92672\">$1</font>");
+	 	}
+	 	/*对函数名，有特征的单词进行替换*/
+	 	a=a.replace(/([a-zA-Z_]*)(\s?)(\(.*\))/g,"<font color=\"#66D9EF\">$1</font>$2$3");
+
+	 	a="<pre style=\"background-color:#444444;font-size: 18px;color: white;\">"+a;
+	 	a=a+"</pre>"; 	
+	 	document.write(a);
+}
 </script>
 </head>
 <body>
-	<h1 class="page-header text-center text-primary">JS基础</h1>
+	<h3 class="page-header text-center text-primary">JS基础</h1>
 	
 	<div class="container">
+		<article>
+			<h1>js 用于展示源代码</h1>
+			<p style="font-size: 25px;">
+				在写博客的时候往往需要将源代码进行展示，
+				于是基于这个思想，我写了一个关于如何对代码进行<strong>高亮</strong>
+				显示的函数
+			</p>
+			<h2>直接上源代码</h2>	
+		<script >
+			 sourceCode("source_js");
+		</script>
+		<p style="font-size: 25px;">
+			从代码上我们也可以看出，函数主要基于以下几个步骤
+
+			<ul class="bg-info text-success" style="font-size: 20px">
+				<li>代码写在本文档中，根据Id来获取到对应的标签内容；</li>
+				<li>使用正则表达式对获取到的文本进行，替换标签处理；</li>
+				<li>定义一个关键字的数组，通过for循环，加上eval函数，来批量对标签中的关键字加上颜色</li>
+				<li>最后加上pre代码标签，并且使用document.write写入到文档中</li>
+			</ul>
+		
+		</p>
+		<div style="font-size: 20px;">
+		<h3 class="text-warning" >最后再安利一个代码颜色设计的网站，我对源代码进行展示的时候，也是从上面取色的</h3>
+		<a  href="http://tmtheme-editor.herokuapp.com" >http://tmtheme-editor.herokuapp.com</a>
+		</div>
+		</article>
+		<div id="footer"></div>	
+		<script>
+			$("#footer").load("/includes/footer.html.php");
+		</script>
+			
 	</div>
 </body>
 </html>

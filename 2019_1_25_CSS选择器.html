@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+
+<div id="sourceCodeheader">
+
+<header  >
+	<div id="header" class="" >
+		
+	</div>
+<title>CSS 基础</title>
+</header><!-- /header -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+$("#header").load("/includes/header.html");
+</script>
+
+<div id="sourceCode">
+	<style>
+			/* 标签选择器 */
+			p{
+				color: #400040;
+				font-size: 20px;
+			}
+			/* 类选择器 */
+			.someclass {
+				color: #3A3D10;
+			}
+			/* ID选择器 */
+			#someid{
+				color: #0A0E43;
+			}
+			.first{
+				color: #0B420F;
+
+			}
+			.second{
+				color: #E91641;
+			}
+			/* 后代选择器中，儿子和孙子标签都进行规定 */
+			p span{
+				color: red;
+			}
+			/* 只对子标签进行定义 */
+			p > span{
+				color: green;
+			}
+		/* 伪类选择器基本使用在a标签上 */
+		a:link {color: blue}
+		a:visited {color: green}
+		a:hover {color: #3C3C11}
+		a:active {color: #450712}
+	</style>
+
+</div>
+
+<script src="/js/my.js"></script>
+</div>
+<body>
+	<script src="/js/canvas-nest.js"></script>
+	<div style="widows: 100%; text-align: center; height: 60px; line-height: 60px;background-color: #004488; 
+	color: #00A200">
+		<h1>CSS 基础</h1>	
+	</div>
+	<div style="position: absolute;right: 10%;left: 10%; border: 1px solid red;">
+		<a href="#">My Github</a>
+		<article>
+		<p>
+			这是一个p标签的选择器修饰的对象
+		</p>
+		<p class="someclass">
+			通过类选择器进行修饰
+		</p>
+		<p id="someid">
+			通过ID选择器进行修饰
+		</p>
+		<p class="second first">
+			
+			类选择器的就进原则，因为在我定义样式的时候,先定义的first类选择器，再定义second类选择器；
+			所以当一个class属性中有两个一样的类选择器（这里它们都改变颜色）-被指定的时候，使用与当前标签最接近的样式
+
+		</p>
+		<p>
+			<span>后代儿子标签</span>
+		</p>
+		<h2>类选择器的源代码</h2>
+		<script>
+			sourceCode("sourceCode");
+		</script>
+
+	</article>
+	
+<hr>	
+	<footer id="footer">
+	</footer>
+	<script>
+	$("#footer").load("/includes/footer.html.php");
+	</script>
+		
+	</div>
+		
+	</div>
+
+</body>
+</html>

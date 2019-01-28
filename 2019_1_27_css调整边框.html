@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head >
+<script src="/includes/head.js"></script>
+<title>CSS 基础</title>
+</head><!-- /header -->
+
+<body>
+<script src="/js/canvas-nest.js"></script>
+<div style="widows: 100% ;background-color: #11173C;border: 1px solid #133931;text-align: center;color: red;">
+<h1>CSS中的盒子</h1>	
+</div>
+<div style="position: absolute;right: 15%;left: 15%;border: 1px dotted green;">
+	<div id="sourceCode" style="margin: 50px 20% 200px 20%">
+	<div style="width: 800px;height: 800px;border: 3px red solid;">
+		<div style="width: 300px; height: 200px; border: green 1px solid;padding: 50px 50px 50px 50px;margin: 100px 250px 100px 250px;">
+			<!-- padding改变字在盒子中的位置，margin修改外边距 -->
+			CSS中的盒子1	
+		</div>
+		<div style="width: 300px; height: 200px; border: blue 1px solid;padding: 50px 50px 50px 50px;margin: 100px 250px 100px 250px;">
+			CSS中的盒子2
+		</div>
+		
+	</div>
+</div>
+	<article style="border: 1px solid #DF7000;">
+		<h2>学习使用css中的padding与margin调整盒子中的位置</h2>
+		<p>源代码如下</p>
+		<script>
+			sourceCode("sourceCode");
+		</script>
+		<p>使用容器标签规定了大小和边框，接着在上面显示的两个盒子是用过css中的 <strong>margin</strong>和 <strong>padding</strong>进行调整盒子中的位置
+			<span >
+				<ul class="bg-success">
+				<li>首先margin调整的是外边距的位置，也就是小盒子在红色大盒子中的位置</li>
+				<li>接着使用padding调整了小盒子中字的位置</li>
+				<li>在各个属性的设置过程中，按顺时针的方向进行设置，也可以使用百分比位置</li>
+			</ul>
+			</span>
+		</p>
+	</article>
+
+
+<hr>	
+	<footer id="footer">
+	</footer>
+	<script>
+	$("#footer").load("/includes/footer.html.php");
+	</script>
+</div>
+
+		
+</body>
+</html>

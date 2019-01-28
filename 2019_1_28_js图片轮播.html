@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<!-- 我的head.js 文件中使用document.write 进行字符的输出 -->
+<head>
+	<script src="/includes/head.js"></script>
+	<title>图片轮播技术</title>
+	<script >
+	/*1.首先有时间被触发*/
+	/*2.有触发函数*/
+	/*3.函数中进行处理*/
+	
+	/*window.setInterval("alert('1243');",2000 );*/
+	/*window是最顶层的对象，可以不用写，就直接调用setInterval*/
+	/*存在取消定时器的函数，它接受一个id编号*//*
+	function test(){
+		console.log("setinterval 被调用了");
+	}
+
+	var colockid;
+	function startclock(){
+		colockid=setInterval("test();",2000);
+	}
+	function stopcolck(){
+		clearInterval(colockid);
+		console.log("colock 停止！");
+
+	}*/
+</script>
+<script id="changeImgFun">
+/*实现图片轮播*/
+/*1.文档加载完成时，触发事件*/
+/*2.事件触发之后，开始函数实现*/
+/*3.函数之中的操作*/
+/*功能函数*/
+var index=0;
+function changeImg(){
+	/*获得轮播的图片*/
+	var picture=document.getElementById("img1");
+	/*有三张图片使用index进行轮播*/
+	var curIndex=index%3 + 1;
+	picture.src="/image/"+curIndex+".jpg";
+	index =index+1;
+}
+</script>
+<script id="initFun">
+/*事件触发函数init*/
+function init(){
+	setInterval("changeImg()",3000);
+}
+</script>
+</head>
+<body onload="init()">
+<div style="widows: 100%; 
+background-color: #0F3E39; 
+color: #CE0067;
+border: 1px red solid;
+text-align: center; 
+font-size: 40px;">
+	JavaScript实现图片轮播	
+</div>
+<div style="widows: 80%;height: 1300px; border: red 1px solid;float: left;">
+<img src="/image/1.jpg" alt="" id="img1" style="position: relative; top: 1px;" ></div>
+
+<div style="float: left;position: absolute;left: 1250px;width: 40%">
+	<article>
+	<p style="font-size: 30px">实现图片轮播主要基于js的三个步骤</p>
+	<ul class="bg-success" style="font-size: 20px;">
+		<li>1.文档加载完成时，触发事件onload()</li>
+		<li>2.有触发函数,实现时钟功能，setInterval()</li>
+		<li>3.实现img标签中图片的替换</li>
+	</ul>
+
+	<h3>第一部分源代码,触发事件</h3>
+
+	<script>
+		sourceCodeByChar("<body onload=\"init()\">");
+	</script>
+	<p>在body标签加载完毕后触发init()函数，也就是一个计时器</p>
+	<h3>第二部分涉及到触发器的书写</h3>
+	<script>
+	sourceCodeById("initFun");
+	</script>
+	<h3>最后一部分就是我的图片替换函数</h3>
+	<script>
+		sourceCodeById("changeImgFun");
+	</script>	
+	</article>	
+</div>
+<div style="clear: both;">	
+<hr>	
+	<footer id="footer">
+	</footer>
+	<script>
+	$("#footer").load("/includes/footer.html.php");
+	</script>
+
+</div>
+
+</body>
+</html>

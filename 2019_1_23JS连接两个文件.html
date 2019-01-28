@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
+
+
+<head>
+<script src="/includes/head.js"></script>
+	<title>JS基础</title>
+</head>
 <div id="sourceCodeheader">
-
-<header  id="header" class="">
-
-</header><!-- /header -->
+	<div id="header">
+		
+	</div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script>
 $("#header").load("/includes/header.html");
 </script>
-
+</div>
 
 <script src="/js/my.js"></script>
 </div>
@@ -26,6 +31,7 @@ $("#header").load("/includes/header.html");
 
 			<li>接着使用js函数进行引用轮子</li>
 		</ul>
+		<h4><strong>这里出了些问题，我是直接利用网上将html5代码转换为js代码，然后使用document.write()写到head标签里的</strong></h4>
 		源代码如下
 		<script>
 			sourceCode("sourceCodeheader");
@@ -35,10 +41,12 @@ $("#header").load("/includes/header.html");
 			<p>这里还有一些需要注意的地方</p>
 			<ul>
 				<li>首先JS是依赖于jQuery的所欲先要加载jQuery</li>
-				<li>在加载header标签时，首先需要加载jQuery</li>
+				<li>在加载head标签时，首先需要加载jQuery</li>
 				<li>加载include中的header标签时，使用的是“$(#ID)"以将加载的文件放入对应的标签</li>
 				<li>标签则需要先于加载文件的出现</li>
 			</ul>
+
+
 		</section>
 	</article>
 

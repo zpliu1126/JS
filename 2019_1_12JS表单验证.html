@@ -7,20 +7,16 @@
 </head>
 <!-- 这里贴上我写的js代码主要是用来展示到html上的，它在my.js中已经存在了 -->
 <script id="loginform_js">
-	function confirmPassword(){
-		var firstPassword=document.forms['ChangePasswordForm']["password"].value;
-		var confirmPassword=document.forms['ChangePasswordForm']["confirm_password"].value;
-		if( firstPassword=="" || confirmPassword==""){
-			alert("请将密码框补充完整");
-			return false;
-
-		}else if (firstPassword != confirmPassword) {
-			alert("两次密码输入不一致");
-			return false;
-		}
-
+function checkform(){
+	if (checkpassword() && confirmPassword()) {
+		return true;
+	}else{
+		return false;
 	}
+
+}
 </script>
+
 <body>
 	<script src="/js/canvas-nest.js"></script>
 	<h1 class="page-header text-center text-primary">JS基础</h1>
@@ -30,8 +26,8 @@
 	<article >
 		<h1>实现基于JS的表单验证</h1>
 
-	<form action="" name="ChangePasswordForm" id="loginform" 
-	 onsubmit="return confirmPassword()" class="form-horizontal" method="post">
+	<form action="#" name="ChangePasswordForm" id="loginform" 
+	 onsubmit="return checkform()" class="form-horizontal" method="post">
 	<div class="form-group">
 		<label for="user" class="control-label col-sm-2">Authorname</label>
 		<div class="col-sm-10 col-lg-4 text-success">
@@ -43,13 +39,13 @@
 		<label for="user" class="control-label col-sm-2">Password</label>
 		<div class="col-sm-10 col-lg-4 input-lg">
 
-			<input type="password" class="form-control "   name="password" placeholder="">
+			<input type="password" class="form-control "  id="password"  name="password" placeholder="" onfocus="showTips('span_password','输入6位数以上的密码')"  onkeyup="checkpassword()" /><span id="span_password"></span>
 		</div>	
 		</div>
 		<div class="form-group">
 		<label for="user" class="control-label col-sm-2">Confirm Password</label>
 		<div class="col-sm-10 col-lg-4 input-lg">
-			<input type="password" class="form-control "   name="confirm_password" placeholder="">
+			<input type="password" class="form-control "   name="confirm_password"  id="confirm_password" placeholder="" onfocus="showTips('span_confirm_password','确认密码')" onblur="confirmPassword()"><span id="span_confirm_password"></span>
 		</div>	
 		</div>
 		<input type="hidden" name="action" value="begin_change">
@@ -68,12 +64,87 @@
 		sourceCode("loginform");	
 	</script>
 	 <div class="text-info " style="font-size: 25px">
-	 	第二部分是则是我的js函数，通过对两个输入框是否为空和一致进行判断
+	 	第二部分是则是我的js函数，通过对两个输入框的检查值是否一致，来判断表单是否需要提交
 	 </div>
 	<script>	
 		sourceCode("loginform_js");	
 	</script>
 	</p>
+
+<hr>
+<script id="chufa">
+	/*1.确定焦点事件
+	2.触发事件之后，修改input后的span标签内容*/
+
+	function showTips(tip_tagById,mes){
+	var span=document.getElementById(tip_tagById);
+		span.innerHTML=mes;
+	}
+</script>
+<script id="jiaoyan">
+	/*1.光标移开之后是一个失去焦点的事件
+	2.事件启用校验函数*/
+	function checkpassword(){
+		/*1.获取用户输入内容*/
+		var uValue=document.getElementById("password").value;
+		var span=document.getElementById("span_password");
+		/*2.进行校验*/
+		if (uValue.length 	<6) {
+			span.innerHTML="<font color='red' size='2'>密码必须大于6位</font>";
+			return false;	
+		}else{
+			span.innerHTML="<font color='red' size='2'>ok</font>";
+			return true;	
+		}
+		/*3.根据校验结果，在span标签是否进行错误提示*/
+
+	}
+</script>
+<script>
+	/*1.确认密码框失去焦点之后触发校验事件
+	2.对确认密码框进行校验*/
+		/*获得第一次密码，和当前密码进行比较*/
+	function confirmPassword(){
+		var uValue=document.getElementById("password").value;
+		var confpassword=document.getElementById("confirm_password").value;
+		var span=document.getElementById("span_confirm_password");
+		if ( confpassword!='' && uValue==confpassword) {
+			span.innerHTML="<font color='red' size='2'>ok</font>";
+			return true;
+
+		}else{
+			span.innerHTML="<font color='red' size='2'>密码不一致</font>";
+			return false;
+		}
+
+
+	}
+</script>
+<article>
+	<h1>上面的JS验证时基于用户提交了验证之后，才会进行验证；接下来对每一个输入框进行实时验证</h1>
+	<ul class="bg-success" style="font-size: 30px;">
+		<li>事件进行触发，使用两个事件对象onfocus()和onblur()</li>
+		<li>事件触发之后是实现的函数</li>
+		<li>首先，当焦点被聚集之后，给出提示</li>
+		<li>当焦点被离开之后进行校验和给出提示</li>
+	</ul>
+	<h3>事件触发代码</h3>
+	<script>
+		sourceCodeByChar("<input  id=\"password\"  onfocus=\"showTips()\"  onkeyup=\"checkpassword()\" /><span id=\"span_password\"></span>")
+	</script>
+
+	<h3>当onfocus()事件被触发是给出span提示标签</h3>
+	<script>
+		sourceCodeById("chufa");
+	</script>
+	<h3>当事件onblue()或者onkeyup()事件触发时进行校验</h3>
+	<script>
+		 sourceCodeById("jiaoyan");
+	</script>
+</article>
+
+
+
 	</article>
 		<div id="footer"></div>	
 		<script>

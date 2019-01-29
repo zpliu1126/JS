@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="/includes/head.js"></script>
+	<title>选择框联动</title>
+</head>
+<script id="sourceCode">
+	/*这是第二个选择框中对应的数据*/
+	var provinces=[
+	["深圳市","东莞市","广州市"],
+	["武汉市","襄阳市","荆州市"],
+	["南昌市","抚州市","赣州市"]
+	];
+	/*触发到省份选择函数*/
+	function selectProvince(){
+		/*获得省份对应的城市数组下标*/
+		var province = document.getElementById("provinces");
+		/*alert(province.value);*/
+		var proIndex=province.value;
+		/*获得对应省份的所有城市信息*/
+		var cities=provinces[proIndex];
+		/*获取城市框，用于添加城市*/
+		var selectCity=document.getElementById("selectCity");
+		/*每换一个省份就将第二个选项卡进行清空*/
+		selectCity.options.length=0;
+		for ( var i =0; i<cities.length;i++) {
+			/*alert(cities[i]);*/
+			var textNote=document.createTextNode(cities[i]);
+			var optionCity=document.createElement("option");
+			optionCity.appendChild(textNote);
+			selectCity.appendChild(optionCity);
+		}
+
+	}
+</script>
+<body>
+	<div class="container">
+	<div style="border: 2px red solid; width: 200px;height: 100px; text-align: center;position: relative;left: 50%">
+		<select class="" onchange="selectProvince()" id="provinces" style="font-size: 20px;">
+		<!-- 省份选择框 -->
+		<option value="-1">请选择</option>
+		option
+		<option value="0">广东省</option>
+		<option value="1">湖北省</option>
+		<option value="2">江西省</option>	
+		</select>
+		<select id="selectCity" style="font-size: 20px;">
+		<!-- 城市选择框 -->
+		</select>
+
+	</div>
+
+
+	<article>
+	<h2>两个选项卡进行联动</h2>
+
+	<p style="font-size: 20px">
+		当第一个省份选项卡选择之后，会列出对应省份的城市，进行选择
+	</p>
+	<h3>主要思路和源代码</h3>
+	<script>
+		sourceCodeById("sourceCode");
+	</script>
+	<ul class="bg-success" style="font-size: 20px">
+		<li>首先得准备一个二维数组，其中城市数组的下标默认情况下，对应起第一个select中option的值</li>
+		<li>接着使用一个触发事件，onchange="selectProvince()"</li>
+		<li>触发的函数，中对应的功能已经，很明显</li>
+	</ul>
+	<hr>
+	<p>
+		<h3>函数功能主要从以下几个步骤开始</h3>
+		<script>
+			sourceCodeById("provinces");
+		</script>
+		<p class="text-warning" style="font-size: 20px"> 
+			首先，select中option中的value值，与数据中的城市下标相对应
+		</p>
+
+		<p class="text-warning" style="font-size: 20px">
+			紧接着利用省份下标，开始找到对应的城市
+			<script>
+				sourceCodeByChar("var proIndex=province.value;var cities=provinces[proIndex];")
+			</script>
+		</p>
+		<p class="text-warning" style="font-size: 20px">
+			找到城市信息，之后，将第二个select标签找出来，将里面的option清空之后，再往里面添加option信息
+			<script>
+				sourceCodeByChar("var selectCity=document.getElementById(\"selectCity\");selectCity.options.length=0;");
+			</script>
+		</p>
+		<p class="text-warning" style="font-size: 20px">
+			添加option信息就非常简单啦！
+			利用document.createTextNode document.createElement appendChild几个函数进行遍历就ok！
+		</p>
+	</p>
+	</article>
+	<hr>
+	<footer id="footer">
+		
+	</footer>
+	<script >
+		$("#footer").load("/includes/footer.html.php");
+	</script>
+	
+	</div>
+	
+</body>
+</html>

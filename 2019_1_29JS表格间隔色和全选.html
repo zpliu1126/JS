@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="/includes/head.js"></script>
+	<title>表格操作</title>
+
+</head>
+
+<script id="tablecolor">
+	/*1.body加载完成之后，触发事件
+	2.触发函数进行颜色的设置*/
+	 function init(){	
+	 	/*得到表格*/
+	 	var tab=document.getElementById("table1");
+	 	/*得到表格中的每一行*/
+	 	var rows=tab.rows;
+	 	for (i=1;i<rows.length;i++) {
+	 		if (i%2==0) {
+	 			rows[i].bgColor="yellow";
+	 		}else{
+	 			rows[i].bgColor="red";
+	 		}
+	 	}
+
+	 }
+</script>
+<script id="checktable">
+	/*1.点击全选的时候触发事件
+	2.函数进行全选*/
+	/*2.1获得全选框的状态
+	2.2其他框的状态*/
+	function checkAll(){
+		var check1=document.getElementById("checkFirst");
+		var checkAllFlag=check1.checked;
+		/*2.获得其他选择框的选择状态*/
+		var checks=document.getElementsByName("checks");
+		for (var i=0 ;i<checks.length;i++) {
+			checks[i].checked=checkAllFlag;
+		}
+
+	}
+
+
+</script>
+
+
+
+
+
+<body onload="init()">
+<div class="container " style="border: 2px dotted #202D26;">
+			
+
+<table class="table-responsive" border="1" width="60%"  id="table1" align="center">
+	<thead  >
+		<tr>
+			<th ><input type="checkbox" id="checkFirst" name="" value="" onclick="checkAll()" ></th>
+			<th >header1</th>
+			<th>header2</th>
+			<th>header3</th>
+			<th>header4</th>
+			<th>header5</th>
+			<th>header6</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr >
+			<td ><input type="checkbox" name="checks" value="" ></td>
+			<td>data11</td>
+			<td>data12</td>
+			<td>data13</td>
+			<td>data14</td>
+			<td>data15</td>
+			<td>data16</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="checks" value=""></td>
+			<td>data21</td>
+			<td>data22</td>
+			<td>data23</td>
+			<td>data24</td>
+			<td>data25</td>
+			<td>data26</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="checks" value=""></td>
+			<td>data31</td>
+			<td>data32</td>
+			<td>data33</td>
+			<td>data34</td>
+			<td>data35</td>
+			<td>data36</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="checks" value=""></td>
+			<td>data41</td>
+			<td>data42</td>
+			<td>data43</td>
+			<td>data44</td>
+			<td>data45</td>
+			<td>data46</td>
+		</tr>
+	</tbody>
+</table>
+<article>
+	<h2>这是一个利用JS动态的将表格进行修饰</h2>
+	<p >其中就包括,间隔的给表格上颜色
+
+		源代码
+		<script >
+			sourceCodeById("tablecolor");
+		</script>
+
+		<ul class="bg-success" style="font-synthesis: 20px">
+			<li>首先使用DOM方法获得表格对象</li>
+			<li>在表格对象中使用rows方法获得每一行</li>
+			<li>遍历除表头外的行，使用bgColoe属性进行背景颜色的定义</li>
+			<li>最后大功告成</li>
+		</ul>
+	</p>
+	<p>
+	<h2>同样可以做一个全选和单选则框</h2>
+	源代码
+	<script>
+		sourceCodeById("checktable");
+	</script>
+	<ul class="bg-success" style="font-size: 20px">
+		<li>首先先通过id获得，表头选择框的状态</li>
+		<li>接着通过getElementsByName获得每一行的选择框状态</li>
+		<li>遍历数组，使每一行的checked属性等于表头就行</li>
+	</ul>
+	
+	</p>
+</article>
+<h3>总结一下：</h4>
+<p class=" text-danger" style="font-size: 20px">
+	在学习JS的时候就可以参照网上的手册进行学习
+	比如 <a href="http://www.w3school.com.cn">W3school</a>
+	在做这个功能的时候可以找到DOM中的table对象，紧接着找到对应的属性和函数的实现，非常的方便！
+	<br>
+	自己把这些基本的功能实现之后，以后就使用Bootstrap来实现，省一些时间；毕竟在这方面要求不高，直接用其他人写好的就行了！
+</p>
+<hr>
+<footer id="footer">
+	
+</footer>
+<script>
+	$("#footer").load("/includes/footer.html.php");
+</script>
+
+</div>		
+</body>
+</html>
+

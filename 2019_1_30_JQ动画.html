@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/includes/head.js"></script>
+<title>Jquery动画</title>
+
+</head>
+<script id="clickEvent">
+
+$(document).ready(function(){
+		$("#btn1").click(function(){
+		$("#img").show(1000);
+	});
+	$("#btn2").click(function(){
+		$("#img").hide(2000);
+	});
+
+});
+</script>
+<script id="mouseEvent">
+$(document).ready(function(){
+	$("#img").mouseenter(function(){
+		$("#img").hide(2000);
+	})
+	$("#img").mouseleave(function(){
+		$("#img").show(2000);
+	})
+	 
+});
+
+</script>
+<body>
+<div class="container">
+	<h1 class="text-primary text-center">使用jQuery，将JS代码与html分离，提高工作效率</h1>
+	<div style="border: 1px red solid;width: 50%;position: relative;left: 30%;" align="center">
+		<input style="font-size:20px;" type="button" name="" id="btn1" value="显示">
+		<input style="font-size:20px;" type="button" name="" id="btn2" value="隐藏">
+	</div>
+
+<br>
+<img src="/image/3.jpg" id="img" alt="">
+<article>
+<h2>这是一个简单的Jquery动画，相比使用JS去写方便了很多</h2>
+<p>
+	源代码
+	<script>
+		sourceCodeById("mouseEvent");
+	</script>
+	<ul class="bg-success" style="font-size: 30px">
+		<li>首先jQuery由一个文档加载事件进行触发</li>
+		<li>文档加载完成之后，将标签与事件进行绑定；这里我绑定的是mouseenter事件</li>
+		<li>事件驱动一个匿名函数，函数中驱动对标签做的操作包括show和hide两个操作</li>
+	</ul>
+</p>
+	
+</article>
+<h2 class="text-danger">总结:</h2>
+<p class="text-warning" style="font-size: 25px;">
+	jQuery是一个库，相比手动写JS代码省了不少功夫；
+	<br>
+	同时在html代码中只需要给，需要操作的标签打上标记就行，不需要手动去绑定事件
+	<br>
+	事件的绑定在jQuery中完成，方便进行代码管理与更新
+	<br>
+	<strong>最后安利一个网站动画很漂亮的 <a href="http://www.jq22.com/" target="_blank" >网站</a>
+	</strong>
+</p>
+<hr>
+<footer id="footer">
+	
+</footer>
+<script>
+	$("#footer").load("/includes/footer.html.php");
+</script>
+
+</div>
+
+
+</body>
+</html>

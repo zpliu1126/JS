@@ -7,8 +7,9 @@
 <!-- https://sandbox.runjs.cn/show/ydp3it7b -->
 <script>
 	/*从服务器获取json数据*/
-	var url='http://www.zpliublog.club/data/Hangli.json';
-	$.get(url,function(jsonArr){
+	/*之前使用http的get方法来获取数据，要使用url=http://www.zpliublog.club/data/Hangli.json*/
+	var url='/data/Hangli.json';
+	$.getJSON(url,function(jsonArr){
 		/*console.log(jsonArr);*/
 		/*json数据储存到jsonArr数组中*/
 		/*随机获取数组中数据,获取0~3的个数，+1避免出现0*/

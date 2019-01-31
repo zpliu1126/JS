@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="/includes/head.js"></script>
+	<title>程序员老黄历</title>
+</head>
+<!-- https://sandbox.runjs.cn/show/ydp3it7b -->
+<script>
+	/*从服务器获取json数据*/
+	var url='http://www.zpliublog.club/data/Hangli.json';
+	$.get(url,function(jsonArr){
+		/*console.log(jsonArr);*/
+		/*json数据储存到jsonArr数组中*/
+		/*随机获取数组中数据,获取0~3的个数，+1避免出现0*/
+		var goodCount=Math.floor(Math.random()*3+1);
+		var badCount=Math.floor(Math.random()*3+1);
+
+		while(goodCount>0){
+			/*适合干啥*/
+			/*选择器进行选择*/
+			/*在li标签中添加数组中的元素*/
+			var index=Math.floor(Math.random()*jsonArr.length);
+
+		$(".good ul").append("<li><div class='name'>"+jsonArr[index].name+"</div> <div class='description'>"+jsonArr[index].good+"</div></li>")
+			goodCount--;
+		}while(badCount>0){
+			/*适合干啥*/
+			/*选择器进行选择*/
+			/*在li标签中添加数组中的元素*/
+			var index=Math.floor(Math.random()*jsonArr.length);
+
+		/*不适合干啥*/
+		$(".bad ul").append("<li><div class='name'>"+jsonArr[index].name+"</div> <div class='description'>"+jsonArr[index].bad+"</div></li>");
+		badCount--;
+		}
+
+		
+		
+
+
+	})
+</script>
+<!-- 定义全局样式 -->
+
+<body>
+	<style>
+	body *{
+		font-family: "Consolas","Microsoft Yahei",Arial,sans-serif;
+	}
+	body{
+		background-color: white;
+		margin: 0;
+		padding: 0;
+	}
+	.container>.title{
+		/* 后代类选择器 */
+		color: #bbb;
+		font-weight: bold;
+		margin-bottom: 10px;
+		background-color: #555;
+		padding: 5px 15px;
+	}
+	/* id选择器 */
+	#date{
+		font-size: 17pt;
+		font-weight: bold;
+		line-height: 30pt;
+		text-align: center;
+	}
+	/* 分割线和清楚线 */
+	.split, .clear{
+		clear: both;
+		height: 1px;
+		overflow-y: hidden;
+	}
+	.good, .bad{
+		clear: both;
+		position:relative;
+	}
+	/* 对good和bad下的所有title类修饰 */
+	.good .title,.bad .title{
+		float: left;
+		width: 100px;
+		text-align: center;
+		font-size: 30pt;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+	}
+	/* 修饰表格 */
+	.good .title>table, .bad .title>table,{
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		border: none; 
+
+	}
+	.good .title{
+		background-color: #ffee44;
+	}
+	.bad .title{
+		background-color: #ff4444;
+		color: #fff;
+	}
+	/* 修饰内容 */
+	.good .content,.bad .content{
+		margin-left: 115px;
+		padding-right: 10px;
+		padding-top: 1px;
+		font-size: 15px;
+	}
+	.good{
+		background: #ffffaa;
+	}
+	.bad{
+		background: #ffddd3;
+	}
+	/* 修饰li标签 */
+	.content ul{
+		list-style: none;
+		margin: 10px 0 0; 
+		padding: 0;
+	}
+	.content ul li{
+		line-height: 150%;
+		 font-size:15pt;
+		 font-weight: bold;
+		 color: #444;
+
+	}
+	.content ul li div.description{
+		font-stretch: 11pt;
+		font-weight: normal;
+		color: #777;
+		line-height: 110%;
+		margin-bottom:10px;
+	}
+
+
+
+	
+</style>
+	<div class="container">
+		<div class="title" id="title1">
+			程序员老黄历
+		<sup>&copy</sup>
+		</div>
+		<div class="date" id="date">	
+		</div>
+		<!-- 好事情填充的内容 -->
+		<div class="good">
+			<div class="title">
+				<table>
+					<tr><td>宜</td></tr>
+				</table>	
+			</div>
+			<div class="content">
+				<ul>
+					<!-- <li><div class="name">吃饭</div> <div class="descripte">吃饱好睡觉</div></li> -->
+				</ul>
+			</div>	
+			<div class="clear"></div>		
+		</div>
+		<div class="split"></div>
+			<!-- 不好的事情填充的内容 -->
+		<div class="bad">
+			<div class="title">
+				<table>
+					<tr><td>不宜</td></tr>
+				</table>	
+			</div>
+			<div class="content">
+				<ul>
+					<!-- <li><div class="name">吃饭</div> <div class="descripte">吃不饱</div></li> -->
+				</ul>
+			</div>	
+			<div class="clear"></div>		
+		</div>
+		<div class="split"></div>
+<hr>
+	<article>
+		<h2>今天使用JSON数据写了一个程序员的黄历网页</h2>
+		<script>
+			sourceCodeByChar('var url="http://www.zpliublog.club/data/Hangli.json";\n$.get(url,function(jsonArr){\n\
+		/*console.log(jsonArr);*/\n\
+		/*json数据储存到jsonArr数组中*/\n\
+		/*随机获取数组中数据,获取0~3的个数，+1避免出现0*/\n\
+		var goodCount=Math.floor(Math.random()*3+1);\n\
+		var badCount=Math.floor(Math.random()*3+1);')
+		</script>
+		<p>
+			主要是使用jQuery的get方法从服务器中获取json数据文件，
+			<br>
+			将它赋值给数组对象，然后随机获取下标进行遍历操作
+		</p>
+		<script>
+			sourceCodeByChar('$(".bad ul").append("<li><div class=\'name\'>"+jsonArr[index].name+"</div> <div class=\'description\'>"+jsonArr[index].bad+"</div></li>");');
+		</script>
+		<h4>在字符串中引用json数据"+Array[index].data+"</h4>
+		<h4>最后就是一些获取随机整数，以及对html进行修饰的CSS样式啦！</h4>	
+	</article>
+	<h3>总结来说，这个功能还同容易实现的，主要就是CSS样式比较难写，估计还得花写时间琢磨一下CSS样式</h3>
+	<span><strong>参考网址</strong>https://sandbox.runjs.cn/show/ydp3it7b</span>
+	</div>
+	<hr>
+	<footer id="footer">
+		
+	</footer>
+	<script >
+		$("#footer").load("/includes/footer.html.php");
+	</script>
+</body>
+<script>
+	var date= new Date();
+	var weekday=[
+"星期日"
+,"星期一"
+,"星期二"
+,"星期三"
+,"星期四"
+,"星期五"
+,"星期六"
+]
+var Nowyear=date.getFullYear();
+var Nowmonth=date.getMonth()+1;
+var Nowday=date.getDate();
+var NowDate="今天是"+Nowyear+"年"+Nowmonth+"月"+Nowday+"日"+weekday[date.getDay()];
+document.getElementById("date").innerHTML=NowDate;
+</script>
+</html>

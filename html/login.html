@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>login</title>
+</head>
+<style>
+  #loginContainer {
+    color: white;
+    height: 100vh;
+    border-top: solid 2px darkred;
+    display: flex;
+    flex-direction:column;
+    height: 100vh;
+    justify-content: center;
+    align-items:center;
+    align-content: flex-end;
+    background: rgb(41, 45, 62) url(https://43423.oss-cn-beijing.aliyuncs.com/img/20190921231830.svg);
+    background-repeat: repeat-y;
+    background-size:cover;
+
+  }
+  .form-group{
+    min-height: 100px;
+  }
+  button.form-control{
+    background: #fafafa;
+    border: none;
+    border-radius: 0.6;
+
+  }
+  </style>
+<body>
+    <div id="loginContainer">
+        <div class="card card-body">
+          <form action="#">
+              <div class="form-group">
+                  <label for="">
+                    用户名
+                  </label>
+                    <input type="text" class="form-control" required placeholder="请输入手机号或邮箱">
+                </div>
+                <div class="form-group">
+                  <label for="">
+                    密码
+                  </label>
+                    <input type="password" class="form-control" required placeholder="请输入不小于5为数的密码">
+                </div>
+                <button  class="form-control btn" type="submit">login</button>
+          </form>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
